@@ -1,9 +1,8 @@
 <template>
-  <h1 class="text-3xl font-bold underline">
-   App
-  </h1>
+  <LayoutDefault />
 </template>
 
 <script setup>
+import LayoutDefault from '@/layouts/LayoutDefault.vue'
 </script>
 <style scoped></style>
