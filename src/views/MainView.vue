@@ -19,7 +19,7 @@ import TodoList from '@/components/TodoList.vue'
 import { useTodosStore } from '@/stores/index.js'
 
 const todosStore = useTodosStore()
-const todos = computed(() => todosStore.getAllTodos)
+const todos = computed(() => todosStore.getFilteredTodos)
 const loading = computed(() => todosStore.getLoading)
 
 const { deleteTodo, updateTodo } = todosStore
