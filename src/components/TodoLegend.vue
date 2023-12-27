@@ -1,5 +1,5 @@
 <template>
-  <div class="legend flex flex-col items-center gap-2 sm:flex-row justify-center">
+  <div class="legend flex flex-col items-center gap-2 sm:flex-row justify-center select-none">
     <div class="legend__item mr-10">- Active</div>
     <div class="legend__item mr-4">- Complete</div>
     <div>Double click to mark as complete</div>

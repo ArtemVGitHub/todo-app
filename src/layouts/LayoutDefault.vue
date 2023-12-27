@@ -2,7 +2,6 @@
   <div class="layout--default pt-10">
     <MainView />
     <AppFooter />
-    <div id="modal"></div>
   </div>
 </template>
 
