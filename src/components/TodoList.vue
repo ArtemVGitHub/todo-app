@@ -9,6 +9,7 @@
           class="flex items-center gap-2 text-white rounded-lg border-0 py-3 px-4 sm:text-sm sm:leading-6 cursor-pointer h-full"
           :class="statusBackgroundClass(todo)"
           @dblclick="changeStatus(todo.id, todo.completed)"
+          @touchend="handleDoubleTap(todo.id, todo.completed)"
         >
           <span class="pointer-events-none select-none">{{ todo.title }}</span>
           <AppButton class="ml-auto bg-white" @click="deleteTodo(todo.id)">
@@ -23,6 +24,7 @@
 </template>
 
 <script setup>
+import { ref } from 'vue'
 import AppButton from '@/components/UI/AppButton.vue'
 import TodoLegend from '@/components/TodoLegend.vue'
 import AppLoader from '@/components/AppLoader.vue'
@@ -50,6 +52,16 @@ const deleteTodo = (id) => {
 }
 const changeStatus = (id, status) => {
   emits('update-todo', id, status)
+}
+
+const lastTap = ref(0)
+const handleDoubleTap = (id, status) => {
+  const currentTime = new Date().getTime()
+  const tapLength = currentTime - lastTap.value
+  if (tapLength < 500 && tapLength > 0) {
+    changeStatus(id, status)
+  }
+  lastTap.value = currentTime
 }
 </script>
 

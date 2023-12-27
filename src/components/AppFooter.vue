@@ -1,6 +1,8 @@
 <template>
   <div class="container mx-auto px-4 py-6">
-    <div class="select-none flex items-center justify-center gap-10 text-lg">
+    <div
+      class="select-none flex flex-col sm:flex-row items-center justify-center gap-4 sm:gap-10text-lg"
+    >
       <div>
         <b>{{ activeTodos }}</b> tasks left
       </div>

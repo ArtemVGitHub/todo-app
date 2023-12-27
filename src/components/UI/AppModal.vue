@@ -1,36 +1,12 @@
 <template>
-  <div class="modal">
-    <div class="conent mx-4 my-4">
-      <spn class="text-xl">Do you want to clear all copleted?</spn>
+  <div
+    class="fixed z-50 p-6 top-0 left-0 w-full h-full flex items-center justify-center bg-black bg-opacity-70"
+  >
+    <div
+      class="conent w-full max-w-[500px] p-10 rounded-xl flex flex-col gap-6 items-center bg-white"
+    >
+      <span class="text-xl">Do you want to clear all completed?</span>
       <div class="flex gap-6"><slot /></div>
     </div>
   </div>
 </template>
-
-<script setup></script>
-
-<style scoped>
-.modal {
-  position: fixed;
-  z-index: 1000;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  background-color: rgba(0, 0, 0, 0.7);
-}
-.conent {
-  width: 100%;
-  max-width: 500px;
-  padding: 40px;
-  border-radius: 24px;
-  display: flex;
-  flex-direction: column;
-  gap: 24px;
-  align-items: center;
-  background-color: #fff;
-}
-</style>
