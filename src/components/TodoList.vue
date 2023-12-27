@@ -1,22 +1,25 @@
 <template>
-  <h1 class="text-2xl font-bold text-center mb-4">TodoList</h1>
-  <TodoLegend class="mb-4" />
-  <AppLoader v-if="loading" />
-  <ul class="grid sm:grid-cols-2 gap-4" :class="{ blur: loading, 'opacity-75': loading }">
-    <template v-for="todo in todos" :key="todo.id">
-      <li
-        v-if="todo.title"
-        class="flex items-center gap-2 text-white rounded-lg border-0 py-3 px-4 sm:text-sm sm:leading-6 cursor-pointer h-full"
-        :class="statusBackgroundClass(todo)"
-        @dblclick="changeStatus(todo.id, todo.completed)"
-      >
-        <span class="pointer-events-none select-none">{{ todo.title }}</span>
-        <AppButton class="ml-auto bg-white" @click="deleteTodo(todo.id)">
-          <Icon :class="{ 'fill-emerald-500': !todo.completed, 'fill-sky-900': todo.completed }" />
-        </AppButton>
-      </li>
-    </template>
-  </ul>
+  <div class="todo-list">
+    <TodoLegend class="mb-4" />
+    <AppLoader v-if="loading" />
+    <ul class="grid sm:grid-cols-2 gap-4" :class="{ blur: loading, 'opacity-75': loading }">
+      <template v-for="todo in todos" :key="todo.id">
+        <li
+          v-if="todo.title"
+          class="flex items-center gap-2 text-white rounded-lg border-0 py-3 px-4 sm:text-sm sm:leading-6 cursor-pointer h-full"
+          :class="statusBackgroundClass(todo)"
+          @dblclick="changeStatus(todo.id, todo.completed)"
+        >
+          <span class="pointer-events-none select-none">{{ todo.title }}</span>
+          <AppButton class="ml-auto bg-white" @click="deleteTodo(todo.id)">
+            <Icon
+              :class="{ 'fill-emerald-500': !todo.completed, 'fill-sky-900': todo.completed }"
+            />
+          </AppButton>
+        </li>
+      </template>
+    </ul>
+  </div>
 </template>
 
 <script setup>

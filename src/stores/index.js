@@ -41,8 +41,8 @@ export const useTodosStore = defineStore('todos', () => {
   async function updateTodo(id, status) {
     try {
       loading.value = true
-      const dataToUpdate = { completed: !status }
-      await axios.patch(`${url}/${id}`, dataToUpdate)
+      const params = { completed: !status }
+      await axios.patch(`${url}/${id}`, params)
       changeTodoStatus(id)
       loading.value = false
     } catch (error) {
@@ -55,5 +55,22 @@ export const useTodosStore = defineStore('todos', () => {
     updatedTodo.completed = !updatedTodo.completed
   }
 
-  return { getLoading, getAllTodos, fetchTodos, deleteTodo, updateTodo }
+  async function postTodo(title) {
+    try {
+      loading.value = true
+      const params = { title, completed: false }
+      const response = await axios.post(`${url}`, params)
+      addTodo(response.data)
+      loading.value = false
+    } catch (error) {
+      console.error('Error fetching todos:', error)
+    }
+  }
+
+  function addTodo(todo) {
+    console.log('todo')
+    todos.value.unshift(todo)
+  }
+
+  return { getLoading, getAllTodos, fetchTodos, deleteTodo, updateTodo, postTodo }
 })
